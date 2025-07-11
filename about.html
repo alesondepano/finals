@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGizmo | About</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+            color: #111;
+        }
+        header {
+            background: #111;
+            color: #fff;
+            padding: 1.2rem 3vw;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #00BFFF;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        nav a:hover, nav .active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #fff;
+        }
+        .layout {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 5vw;
+        }
+        .about-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #f9f9f9;
+            border-radius: 1.2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 2.5rem 2rem 2.5rem 2rem;
+            text-align: center;
+        }
+        .about-section h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+        .about-section p {
+            font-size: 1.15rem;
+            color: #333;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        .about-section .credit {
+            color: #888;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+        }
+        .about-section a.btn {
+            background: #00BFFF;
+            color: #fff;
+            padding: 0.9rem 2.2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+        .about-section a.btn:hover {
+            background: #0099cc;
+            transform: translateY(-2px) scale(1.05);
+        }
+        footer {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 1.2rem 0;
+            margin-top: 2rem;
+        }
+        .footer-logo {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #111;
+                position: absolute;
+                top: 64px;
+                right: 0;
+                width: 100%;
+                padding: 1rem;
+                z-index: 150;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .layout {
+                flex-direction: column;
+            }
+            .about-section {
+                padding: 1.5rem 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Tech<span>Gizmo</span></div>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="deals.html">Deals</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        </div>
+    </header>
+    <div class="layout">
+        <main>
+            <section class="about-section">
+                <h1>About TechGizmo</h1>
+                <p>
+                    TechGizmo is your one-stop shop for the latest and greatest technology gadgets! 
+                    Explore our curated collection of innovative devices, from wireless headphones to smart wearables, home automation, and more. 
+                    <br><br>
+                    Our mission is to make the newest technology accessible and enjoyable for everyone. We aim to provide you with the best products, competitive deals, and an excellent shopping experience.
+                </p>
+                <a href="index.html" class="btn">Back to Home</a>
+                <div class="credit">
+                    Web Designer: Aleson Axel<br>
+                    Email: <a href="alesondepano@gmail.com">alesondepano@gmail.com</a>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-logo">
+            <div class="logo">Tech<span>Gizmo</span></div>
+        </div>
+        <div class="footer-info">
+            <p>Web Designer: Aleson Axel D. De Pano</p>
+            <p>Email: <a href="mailto:alesondepano@gmail.com">alesondepano@gmail.com</a></p>
+        </div>
+        <p>&copy; 2025 TechGizmo. All rights reserved.</p>
+    </footer>
+    <script>
+        // Hamburger menu functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const navList = document.getElementById('nav-list');
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('show');
+        });
+        document.addEventListener('click', function(event) {
+            if (
+                window.innerWidth <= 768 &&
+                navList.classList.contains('show') &&
+                !navList.contains(event.target) &&
+                event.target !== menuToggle
+            ) {
+                navList.classList.remove('show');
+            }
+        });
+        function handleNavDisplay() {
+            if (window.innerWidth > 768) {
+                navList.classList.remove('show');
+                navList.style.display = 'flex';
+            } else {
+                navList.style.display = '';
+            }
+        }
+        window.addEventListener('resize', handleNavDisplay);
+        document.addEventListener('DOMContentLoaded', handleNavDisplay);
+    </script>
+</body>
+</html>

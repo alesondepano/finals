@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGizmo | Cart</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #fff;
+            color: #111;
+        }
+        header {
+            background: #111;
+            color: #fff;
+            padding: 1.2rem 3vw;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .logo span {
+            color: #00BFFF;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        nav a:hover, nav .active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #fff;
+        }
+        .layout {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 5vw;
+        }
+        .cart-section {
+            padding: 3rem 5vw 2rem 5vw;
+            background: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cart-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+        .cart-table th, .cart-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+        .cart-table th {
+            background: #f5f5f5;
+        }
+        .cart-table img {
+            width: 60px;
+            border-radius: 0.75rem;
+        }
+        .cart-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .btn, .cart-checkout {
+            background: #00BFFF;
+            color: #fff;
+            padding: 0.7rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn:hover, .cart-checkout:hover {
+            background: #0099cc;
+            transform: translateY(-2px) scale(1.05);
+        }
+        .cart-total {
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        .empty-cart {
+            text-align: center;
+            color: #555;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+        footer {
+            background: #111;
+            color: #fff;
+            text-align: center;
+            padding: 1.2rem 0;
+            margin-top: 2rem;
+        }
+        .footer-logo {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #111;
+                position: absolute;
+                top: 64px;
+                right: 0;
+                width: 100%;
+                padding: 1rem;
+                z-index: 150;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .layout {
+                flex-direction: column;
+            }
+            .cart-table th, .cart-table td {
+                padding: 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Tech<span>Gizmo</span></div>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="deals.html">Deals</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="cart.html" class="active">Cart</a></li>
+                    <li><a href="account.html">Account</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        </div>
+    </header>
+    <div class="layout">
+        <main>
+            <section class="cart-section">
+                <h2>Your Cart</h2>
+                <div id="cartContent">
+                    <div class="empty-cart">Your cart is empty.</div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <div class="footer-logo">
+            <div class="logo">Tech<span>Gizmo</span></div>
+        </div>
+        <div class="footer-info">
+            <p>Web Designer: Aleson Axel</p>
+            <p>Email: <a href="alesondepano@gmail.com">alesondepano@gmail.com</a></p>
+        </div>
+        <p>&copy; 2025 TechGizmo. All rights reserved.</p>
+    </footer>
+    <script>
+        // Hamburger menu functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const navList = document.getElementById('nav-list');
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('show');
+        });
+        document.addEventListener('click', function(event) {
+            if (
+                window.innerWidth <= 768 &&
+                navList.classList.contains('show') &&
+                !navList.contains(event.target) &&
+                event.target !== menuToggle
+            ) {
+                navList.classList.remove('show');
+            }
+        });
+        function handleNavDisplay() {
+            if (window.innerWidth > 768) {
+                navList.classList.remove('show');
+                navList.style.display = 'flex';
+            } else {
+                navList.style.display = '';
+            }
+        }
+        window.addEventListener('resize', handleNavDisplay);
+        document.addEventListener('DOMContentLoaded', handleNavDisplay);
+
+        // CART FUNCTIONALITY
+        function renderCart() {
+            const cartContent = document.getElementById('cartContent');
+            let cart = [];
+            try { cart = JSON.parse(localStorage.getItem('cart')) || []; } catch(e) { cart = []; }
+            if (!cart.length) {
+                cartContent.innerHTML = '<div class="empty-cart">Your cart is empty.</div>';
+                return;
+            }
+            let total = 0;
+            let tableRows = cart.map((item, idx) => {
+                total += item.price * item.qty;
+                return `
+                <tr>
+                    <td><img src="${item.img}" alt="${item.name}" /></td>
+                    <td>${item.name}</td>
+                    <td>₱${item.price.toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+                    <td>
+                        <div class="cart-actions">
+                            <button class="btn" onclick="updateQty(${idx}, -1)">-</button>
+                            ${item.qty}
+                            <button class="btn" onclick="updateQty(${idx}, 1)">+</button>
+                        </div>
+                    </td>
+                    <td>₱${(item.price * item.qty).toLocaleString(undefined, {minimumFractionDigits: 2})}</td>
+                    <td><button class="btn" onclick="removeItem(${idx})">Remove</button></td>
+                </tr>`;
+            }).join('');
+            cartContent.innerHTML = `
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableRows}
+                    </tbody>
+                </table>
+                <div class="cart-total">Total: ₱${total.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
+                <button class="cart-checkout">Checkout</button>
+            `;
+        }
+        function updateQty(idx, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart[idx].qty += change;
+            if (cart[idx].qty < 1) cart[idx].qty = 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+        function removeItem(idx) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(idx, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+        window.updateQty = updateQty;
+        window.removeItem = removeItem;
+        document.addEventListener('DOMContentLoaded', renderCart);
+    </script>
+</body>
+</html>
